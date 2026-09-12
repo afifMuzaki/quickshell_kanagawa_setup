@@ -1,6 +1,7 @@
 import QtQuick
 
 import "./Battery.qml"
+import "./Network.qml"
 
 Item {
     id: root
@@ -10,8 +11,9 @@ Item {
 
     Row {
         id: row
-        spacing: 10
+        spacing: 14
 
+        Network {}
         Battery {}
     }
 }
