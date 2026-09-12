@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 
 import "./BarItem.qml"
+import "./Workspaces.qml"
 import "./Clock.qml"
 
 Variants {
@@ -30,7 +31,9 @@ Variants {
                 spacing: 10
 
                 BarItem {
-                    text: 'Workspaces'
+                    content: Component {
+                        Workspaces {}
+                    }
                 }
 
                 Item {
