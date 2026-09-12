@@ -1,7 +1,9 @@
+import QtQuick.Layouts
 import QtQuick
 
 import "./Battery.qml"
 import "./Network.qml"
+import "./Bluetooth.qml"
 
 Item {
     id: root
@@ -9,11 +11,18 @@ Item {
     implicitWidth: row.implicitWidth
     implicitHeight: row.implicitHeight
 
-    Row {
+    RowLayout {
         id: row
         spacing: 14
 
-        Network {}
-        Battery {}
+        Bluetooth {
+            Layout.alignment: Qt.AlignBottom
+        }
+        Network {
+            Layout.alignment: Qt.AlignBottom
+        }
+        Battery {
+            Layout.alignment: Qt.AlignBottom
+        }
     }
 }
