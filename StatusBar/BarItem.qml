@@ -1,27 +1,34 @@
 import QtQuick
-import QtQuick.Layouts
 
-RowLayout {
+Item {
     id: root
-    property string text
+    property string text: 'BarItem'
+    property Component content
     property int fontSize: 12
 
-    spacing: 8
+    implicitWidth: itemComponent.implicitWidth + 30
+    implicitHeight: itemComponent.implicitHeight + 25
 
     Rectangle {
-        width: workspaces.implicitWidth + 30
-        height: workspaces.implicitHeight + 25
         color: '#16161D'
-        anchors.centerIn: parent
+        anchors.fill: parent
         radius: 8
 
-        Text {
-            id: workspaces
+        Loader {
+            id: itemComponent
             anchors.centerIn: parent
-            text: root.text
-            font.pixelSize: root.fontSize
-            font.family: 'CaskaydiaCove Nerd Font'
-            color: "#DCD7BA"
+            sourceComponent: root.content ?? fallbackText
+        }
+
+        Component {
+            id: fallbackText
+            Text {
+                anchors.centerIn: parent
+                text: root.text
+                font.pixelSize: root.fontSize
+                font.family: 'CaskaydiaCove Nerd Font'
+                color: "#DCD7BA"
+            }
         }
     }
 }
