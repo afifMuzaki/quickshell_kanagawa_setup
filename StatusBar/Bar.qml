@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import "./BarItem.qml"
 import "./Workspaces.qml"
 import "./Clock.qml"
+import "./StatusItems.qml"
 
 Variants {
     model: Quickshell.screens
@@ -50,7 +51,9 @@ Variants {
                 }
 
                 BarItem {
-                    text: 'Wi-Fi | 80%'
+                    content: Component {
+                        StatusItems {}
+                    }
                 }
             }
         }
