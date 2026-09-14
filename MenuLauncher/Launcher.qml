@@ -13,6 +13,7 @@ FloatingWindow {
     height: 450
 
     property int selectedIndex: 0
+    property bool isFocused: menuLauncher.contentItem.activeFocus
 
     function moveSelected(delta: int): void {
         var count = appFilter.filtered.length;
@@ -63,7 +64,7 @@ FloatingWindow {
         color: "#16161D"
         radius: 12
         border.color: "#DCD7BA"
-        border.width: 2
+        border.width: menuLauncher.isFocused ? 0 : 1
 
         ColumnLayout {
             anchors.fill: parent
