@@ -44,6 +44,7 @@ Variants {
                 BarItem {
                     text: Clock.time
                     fontSize: 16
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 Item {
