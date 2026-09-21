@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import Quickshell.Services.Notifications
 
 import "./NotifyHeader.qml"
+import "./ActionButton.qml"
 
 Rectangle {
     required property Notification modelData
@@ -16,7 +17,7 @@ Rectangle {
 
     Timer {
         interval: modelData.expireTimeout > 0 ? modelData.expireTimeout : 5000
-        running: true
+        running: modelData.actions.length === 0
         repeat: false
         onTriggered: modelData.dismiss()
     }
@@ -53,6 +54,23 @@ Rectangle {
             Layout.fillWidth: true
             wrapMode: Text.Wrap
             visible: text !== ""
+        }
+
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.topMargin: 10
+            visible: modelData.actions.length > 0
+            spacing: 8
+
+            Item {
+                Layout.fillWidth: true
+            }
+
+            Repeater {
+                model: modelData.actions
+
+                delegate: ActionButton {}
+            }
         }
     }
 }

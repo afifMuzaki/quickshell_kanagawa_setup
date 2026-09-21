@@ -8,6 +8,8 @@ import "./NotifyCard.qml"
 ShellRoot {
     NotificationServer {
         id: notifyServer
+        actionsSupported: true
+        imageSupported: true
 
         onNotification: notification => {
             notification.tracked = true;
