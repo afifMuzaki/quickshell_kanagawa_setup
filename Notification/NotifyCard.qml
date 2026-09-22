@@ -56,20 +56,32 @@ Rectangle {
             visible: text !== ""
         }
 
-        RowLayout {
+        Flickable {
+            id: scrollCotainer
             Layout.fillWidth: true
+            Layout.preferredHeight: rowLayout.implicitHeight
             Layout.topMargin: 10
-            visible: modelData.actions.length > 0
-            spacing: 8
+            contentWidth: rowLayout.implicitWidth
+            contentHeight: height
+            boundsBehavior: Flickable.StopAtBounds
+            clip: true
 
-            Item {
+            RowLayout {
+                id: rowLayout
                 Layout.fillWidth: true
-            }
+                width: Math.max(scrollCotainer.width, implicitWidth)
+                visible: modelData.actions.length > 0
+                spacing: 8
 
-            Repeater {
-                model: modelData.actions
+                Item {
+                    Layout.fillWidth: true
+                }
 
-                delegate: ActionButton {}
+                Repeater {
+                    model: modelData.actions
+
+                    delegate: ActionButton {}
+                }
             }
         }
     }

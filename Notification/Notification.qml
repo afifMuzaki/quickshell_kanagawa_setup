@@ -29,7 +29,7 @@ ShellRoot {
             right: 12
         }
 
-        width: 400
+        width: 450
         height: contentColumn.height + 20
         color: "transparent"
 
