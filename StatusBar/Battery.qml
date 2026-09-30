@@ -7,12 +7,12 @@ Item {
     readonly property var battery: UPower.displayDevice
     readonly property bool available: battery && battery.ready && battery.isLaptopBattery
     readonly property int percentage: available ? Math.round(battery.percentage * 100) : -1
-    readonly property var state: available ? battery.state : UPowerDeviceState.Unknown
+    readonly property var batteryState: available ? battery.state : UPowerDeviceState.Unknown
 
-    readonly property bool isCharging: state === UPowerDeviceState.Charging
-    readonly property bool isPending: state === UPowerDeviceState.PendingCharge
-    readonly property bool isDischarging: state === UPowerDeviceState.Discharging || state === UPowerDeviceState.PendingDischarge
-    readonly property bool isFull: state === UPowerDeviceState.FullyCharged
+    readonly property bool isCharging: batteryState === UPowerDeviceState.Charging
+    readonly property bool isPending: batteryState === UPowerDeviceState.PendingCharge
+    readonly property bool isDischarging: batteryState === UPowerDeviceState.Discharging || batteryState === UPowerDeviceState.PendingDischarge
+    readonly property bool isFull: batteryState === UPowerDeviceState.FullyCharged
     readonly property bool isCritical: available && !isCharging && percentage <= 20
 
     readonly property string percentText: available ? percentage + '%' : ''
