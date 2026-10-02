@@ -1,9 +1,7 @@
 import QtQuick.Layouts
 import QtQuick
 
-import "./Battery.qml"
-import "./Network.qml"
-import "./Bluetooth.qml"
+import "./Indicators"
 
 Item {
     id: root
